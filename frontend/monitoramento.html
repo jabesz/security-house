@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/global.css">
+  <title>Monitoramento em Tempo Real</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <button class="btn-voltar" onclick="window.location.href='dashboard.html'">Voltar</button>
+      <div class="navbar-logo">
+        <h1><a href="#">Segurança Residencial</a></h1>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="monitoramento" class="monitoramento">
+      <h2>Monitoramento em Tempo Real</h2>
+      <button class="btn-add-camera" id="add-camera-btn">Adicionar Câmera</button>
+      <div class="grid cameras" id="camera-grid">
+        
+      </div>
+    </section>
+
+    <section id="alertas" class="alertas">
+      <h2>Envio de Alertas</h2>
+      <div class="alert-form-container">
+        <form id="alert-form">
+          <label for="alert-title">Título do Alerta:</label>
+          <input type="text" id="alert-title" name="alert-title" required placeholder="Informe o título do alerta">
+
+          <label for="alert-message">Mensagem do Alerta:</label>
+          <textarea id="alert-message" name="alert-message" required placeholder="Descreva o alerta"></textarea>
+
+          <button type="submit">Enviar Alerta</button>
+        </form>
+        <div id="response-message"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+
+  <div id="modal-success" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>Alerta Enviado com Sucesso!</h3>
+      <p>Seu alerta foi enviado corretamente.</p>
+    </div>
+  </div>
+
+  <script src="../js/monitoramento.js"></script>
+</body>
+
+</html>

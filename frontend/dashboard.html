@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/statistics.js"></script>
+  <title>Dashboard - Segurança Residencial</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body> 
+  <header class="dashboard-header">
+    <h1>Bem-vindo, [Nome do Usuário]</h1>
+    <div id="notification-bar" class="notification-bar">
+      <p>Nenhuma nova notificação</p>
+    </div>
+    <div class="header-buttons">
+      <button id="logout-button">Logout</button>
+      <a href="profile.html" class="profile-icon" title="Perfil do Usuário">
+        <img src="../assets/user-icon.svg" alt="Perfil" />
+      </a>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <section class="dashboard-summary">
+      <h2>Resumo Geral</h2>
+      <div class="summary-container">
+        <div class="summary-card">
+          <h3>Dispositivos Ativos</h3>
+          <p class="summary-number">7</p>
+          <p class="summary-description">Monitorados em tempo real</p>
+        </div>
+        <div class="summary-card">
+          <h3>Erros Detectados</h3>
+          <p class="summary-number">2</p>
+          <p class="summary-description">Relatados nas últimas 24 horas</p>
+        </div>
+        <div class="summary-card">
+          <h3>Uptime</h3>
+          <p class="summary-number">162H</p>
+          <p class="summary-description">Média semanal</p>
+        </div>
+        <div class="summary-card">
+          <h3>Notificações</h3>
+          <p class="summary-number">6</p>
+          <p class="summary-description">Hoje</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <h2 class="chart-title">Estatísticas de Monitoramento</h2>
+      <div class="chart-container">
+        <canvas id="devicesChart" class="chart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="eventsChart" class="chart"></canvas>
+      </div>
+      <div class="chart-legend">
+        <div class="chart-legend-item blue">
+          <span></span> Câmeras Ativas
+        </div>
+        <div class="chart-legend-item red">
+          <span></span> Sensores Ativos
+        </div>
+        <div class="chart-legend-item green">
+          <span></span> Outros Dispositivos
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('search-devices');
+        const deviceCards = document.querySelectorAll('.device-card');
+
+        searchInput.addEventListener('input', function (event) {
+          const searchTerm = event.target.value.toLowerCase();
+
+          deviceCards.forEach(function (card) {
+            const deviceName = card.querySelector('h3').textContent.toLowerCase();
+
+            if (deviceName.includes(searchTerm)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    </script>
+
+  <section class="devices">
+    <h2 class="devices-title">Dispositivos Conectados</h2>
+    <div class="devices-search">
+      <input type="text" id="search-devices" placeholder="Buscar dispositivos...">
+    </div>
+    <div class="devices-list">
+      <div class="device-card">
+        <h3>Câmera da Sala</h3>
+        <p>Status: <span class="device-status ativo">Ativo</span></p>
+      </div>
+      <div class="device-card">
+        <h3>Sensor de Movimento</h3>
+        <p>Status: <span class="device-status ativo">Ativo</span></p>
+      </div>
+      <div class="device-card">
+        <h3>Câmera da Cozinha</h3>
+        <p>Status: <span class="device-status inativo">Inativo</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="navigation">
+    <h2 class="navigation-title">Acesse Funcionalidades</h2>
+    <div class="navigation-buttons">
+      <button onclick="window.location.href='monitoramento.html'" class="nav-btn">
+        Monitoramento
+      </button>
+      <button onclick="window.location.href='historico.html'" class="nav-btn">
+        Histórico
+      </button>
+      <button onclick="window.location.href='dispositivos.html'" class="nav-btn">
+        Dispositivos
+      </button>
+      <button onclick="window.location.href='statistics.html'" class="nav-btn">
+        Estatísticas
+      </button>
+      <button onclick="window.location.href='devices.html'" class="nav-btn">
+        Controle de Dispositivos
+      </button>
+      <button onclick="window.location.href='store.html'" class="nav-btn">
+        Loja
+      </button>
+    </div>
+  </section>
+
+    <section class="plans">
+      <h2 class="plans-title">Seu Plano</h2>
+      <p id="user-plan" class="plan-status">Nenhum plano escolhido ainda.</p>
+      <button id="upgrade-button" class="btn-upgrade" onclick="window.location.href='plans.html'">
+        <span class="btn-icon"></span> Atualizar Plano
+      </button>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+
+</html>

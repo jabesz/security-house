@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/statistics.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>Estatísticas Avançadas</title>
+</head>
+
+<body>
+  <header class="dashboard-header">
+    <div class="header-container">
+      <button class="btn-back" onclick="window.location.href='dashboard.html'">
+        Voltar
+      </button>
+      <h1 class="dashboard-title">Estatísticas Avançadas</h1>
+    </div>
+  </header>
+
+
+  <main class="statistics-container">
+    <section class="statistics-section">
+      <div class="statistics-header">
+        <h2>Resumo de Dispositivos</h2>
+        <p class="statistics-description">Visualize o status atual e o desempenho dos dispositivos ativos em seu
+          sistema.</p>
+      </div>
+      <canvas id="devicesChart"></canvas>
+    </section>
+
+    <section class="statistics-section">
+      <div class="statistics-header">
+        <h2>Eventos Registrados</h2>
+        <p class="statistics-description">Análise gráfica dos eventos e atividades mais recentes no sistema.</p>
+      </div>
+      <canvas id="eventsChart"></canvas>
+    </section>
+
+    <section class="statistics-section">
+      <div class="statistics-header">
+        <h2>Últimos Eventos</h2>
+        <p class="statistics-description">Veja uma lista detalhada dos últimos eventos registrados, incluindo
+          informações sobre o status e hora.</p>
+      </div>
+      <table class="statistics-table">
+        <thead>
+          <tr>
+            <th>ID do Evento</th>
+            <th>Tipo de Evento</th>
+            <th>Status</th>
+            <th>Data e Hora</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>Dispositivo Conectado</td>
+            <td><span class="status-success">Sucesso</span></td>
+            <td>12/12/2024 14:30</td>
+            <td><button class="btn-details">Detalhes</button></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Erro de Conexão</td>
+            <td><span class="status-error">Erro</span></td>
+            <td>12/12/2024 14:35</td>
+            <td><button class="btn-details">Detalhes</button></td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>Dispositivo Desconectado</td>
+            <td><span class="status-warning">Aviso</span></td>
+            <td>12/12/2024 15:00</td>
+            <td><button class="btn-details">Detalhes</button></td>
+          </tr>
+          <tr>
+            <td>004</td>
+            <td>Erro de Configuração</td>
+            <td><span class="status-error">Erro</span></td>
+            <td>12/12/2024 15:10</td>
+            <td><button class="btn-details">Detalhes</button></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </section>
+
+    <section class="statistics-section">
+      <div class="statistics-header">
+        <h2>Atividade por Usuário</h2>
+        <p class="statistics-description">Análise de atividade registrada por cada usuário do sistema.</p>
+      </div>
+      <canvas id="userActivityChart"></canvas>
+    </section>
+
+    <section class="statistics-section">
+      <div class="statistics-header">
+        <h2>Resumo de Performance do Sistema</h2>
+        <p class="statistics-description">Avaliação da performance geral do sistema ao longo do tempo, incluindo uso de
+          CPU e memória.</p>
+      </div>
+      <div class="performance-summary">
+        <div class="performance-item">
+          <h3>Uso de CPU</h3>
+          <p><strong>Último valor:</strong> 67% <span class="status-success">(Normal)</span></p>
+        </div>
+        <div class="performance-item">
+          <h3>Memória Usada</h3>
+          <p><strong>Último valor:</strong> 8GB/16GB <span class="status-warning">(Atenção)</span></p>
+        </div>
+        <div class="performance-item">
+          <h3>Armazenamento</h3>
+          <p><strong>Último valor:</strong> 150GB/500GB <span class="status-success">(Normal)</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="statistics-section">
+      <div class="statistics-header">
+        <h2>Gráfico de Desempenho ao Longo do Tempo</h2>
+        <p class="statistics-description">Veja como o desempenho do sistema se comportou ao longo dos últimos dias.</p>
+      </div>
+      <canvas id="performanceChart"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>Detalhes do Evento</h3>
+      <div id="modal-details">
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/statistics.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/plans.css">
+  <title>Planos</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <header class="dashboard-header">
+    <h1>Planos</h1>
+  </header>
+
+  <main>
+    <button class="btn-back" onclick="window.location.href='dashboard.html'">Voltar</button>
+    <section class="plans-section">
+      <h2>Escolha seu Plano</h2>
+      <div id="plan-list" class="plan-cards">
+      </div>
+    </section>
+    <button class="btn-cart" onclick="window.location.href='carrinho.html'">Carrinho</button>
+  </main>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+      <p id="modal-price"></p>
+      <button onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="../js/plans.js"></script>
+</body>
+
+</html>

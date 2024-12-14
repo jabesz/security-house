@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/carrinho.css">
+  <script src="../js/carrinho.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="cart-page">
+    <div class="cart-header">
+      <h2>Seu Carrinho</h2>
+      <button class="btn-back-to-shop" onclick="window.history.back()">Voltar para a loja</button>
+    </div>
+    <div class="cart-items">
+      <div class="cart-item">
+        <img src="produto1.jpg" alt="Produto 1">
+        <div class="item-info">
+          <h3>Produto 1</h3>
+          <p>Preço: R$ 50,00</p>
+          <div class="quantity-control">
+            <button class="btn-quantity-minus">-</button>
+            <span class="quantity">1</span>
+            <button class="btn-quantity-plus">+</button>
+          </div>
+          <button class="btn-remove-item">Remover</button>
+        </div>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <p><strong>Total: R$ 50,00</strong></p>
+      <button class="btn-checkout">Finalizar Compra</button>
+    </div>
+  </div>
+</body>
+</html>

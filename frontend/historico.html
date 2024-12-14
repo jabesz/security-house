@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/historico.css">
+  <title>Histórico de Eventos</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <button onclick="window.location.href='dashboard.html'" class="btn-back">Voltar</button>
+      <h1>Histórico de Eventos</h1>
+    </nav>
+  </header>
+
+
+  <main>
+    <section class="filter-section">
+      <h2>Filtros</h2>
+
+      <div class="filter-group">
+        <label for="filter-date">Filtrar por data:</label>
+        <input type="date" id="filter-date" class="filter-input" aria-label="Filtrar por data">
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-type">Filtrar por tipo:</label>
+        <select id="filter-type" class="filter-input" aria-label="Filtrar por tipo">
+          <option value="all">Todos</option>
+          <option value="motion">Movimento</option>
+          <option value="access">Acesso</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-range">Filtrar por intervalo de data:</label>
+        <input type="date" id="filter-range-start" class="filter-input" aria-label="Data inicial">
+        <span>-</span>
+        <input type="date" id="filter-range-end" class="filter-input" aria-label="Data final">
+      </div>
+
+      <button id="apply-filter" class="btn-primary">Aplicar Filtros</button>
+    </section>
+
+    <section class="event-list-section">
+      <h2>Eventos</h2>
+      <ul id="event-list">
+        <li>Carregando eventos...</li>
+      </ul>
+    </section>
+
+    <section class="add-event-section">
+      <button id="add-event-btn" class="btn-nav">Adicionar Evento</button>
+    </section>
+  </main>
+
+  <div id="add-event-modal" class="modal">
+    <div class="modal-content">
+      <h3>Adicionar Novo Evento</h3>
+      <form id="add-event-form" aria-labelledby="add-event-modal">
+        <div class="form-group">
+          <label for="event-type">Tipo de Evento:</label>
+          <select id="event-type" required aria-required="true">
+            <option value="motion">Movimento</option>
+            <option value="access">Acesso</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="event-description">Descrição:</label>
+          <textarea id="event-description" required placeholder="Descrição do evento..."
+            aria-required="true"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Salvar Evento</button>
+        <button type="button" id="close-modal-btn" class="btn-secondary">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+  <div id="confirmation-modal" class="modal">
+    <div class="modal-content">
+      <p>Evento adicionado com sucesso!</p>
+      <button id="close-confirmation" class="btn-primary">Fechar</button>
+    </div>
+  </div>
+
+  <script src="../js/historico.js"></script>
+</body>
+
+</html>

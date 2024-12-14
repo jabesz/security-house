@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/dispositivos.css">
+  <title>Gerenciamento de Dispositivos</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <header class="dashboard-header">
+    <div class="header-buttons">
+      <button onclick="window.location.href='dashboard.html'" class="btn-back">Voltar</button>
+    </div>
+    <h1>Gerenciamento de Dispositivos</h1>
+  </header>
+
+  <main class="dashboard-main">
+    <section class="devices">
+      <h2 class="devices-title">Dispositivos Conectados</h2>
+      <div class="filter-bar">
+        <label for="filter-status">Filtrar por Status:</label>
+        <select id="filter-status" onchange="filtrarDispositivos()">
+          <option value="all">Todos</option>
+          <option value="ativo">Ativo</option>
+          <option value="inativo">Inativo</option>
+        </select>
+        <label for="filter-type">Filtrar por Tipo:</label>
+        <select id="filter-type" onchange="filtrarDispositivos()">
+          <option value="all">Todos</option>
+          <option value="camera">Câmera</option>
+          <option value="sensor">Sensor</option>
+          <option value="alarme">Alarme</option>
+        </select>
+      </div>
+      <div class="devices-list" id="device-list">
+      </div>
+    </section>
+
+    <section class="add-device">
+      <h2 class="add-device-title">Adicionar Novo Dispositivo</h2>
+      <form id="add-device-form" class="add-device-form">
+        <div class="form-group">
+          <label for="device-name">Nome do Dispositivo:</label>
+          <input type="text" id="device-name" placeholder="Ex.: Câmera da Sala" required>
+        </div>
+        <div class="form-group">
+          <label for="device-type">Tipo de Dispositivo:</label>
+          <select id="device-type">
+            <option value="camera">Câmera</option>
+            <option value="sensor">Sensor</option>
+            <option value="alarme">Alarme</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="device-location">Localização:</label>
+          <input type="text" id="device-location" placeholder="Ex.: Sala de Estar" required>
+        </div>
+        <button type="submit" class="btn-submit">Adicionar</button>
+      </form>
+    </section>
+
+    <section class="control-panel">
+      <h2 class="control-panel-title">Painel de Controle</h2>
+      <div class="control-options">
+        <button onclick="ligarTodos()" class="btn-control">Ligar Todos</button>
+        <button onclick="desligarTodos()" class="btn-control">Desligar Todos</button>
+        <button onclick="reiniciarDispositivos()" class="btn-control">Reiniciar Dispositivos</button>
+      </div>
+    </section>
+
+    <section class="activity-logs">
+      <h2 class="section-title">Logs de Atividade</h2>
+      <div class="log-items" id="log-items">
+      </div>
+    </section>
+
+    <section class="device-statistics">
+      <h2 class="section-title">Estatísticas</h2>
+      <div class="statistics">
+        <div class="stat-item">
+          <p>Total de Dispositivos: <span id="total-devices">0</span></p>
+        </div>
+        <div class="stat-item">
+          <p>Ativos: <span id="active-devices">0</span></p>
+        </div>
+        <div class="stat-item">
+          <p>Inativos: <span id="inactive-devices">0</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="../js/dispositivos.js"></script>
+</body>
+
+</html>

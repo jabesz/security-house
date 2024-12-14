@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Acesso e Permissões</title>
+  <link rel="stylesheet" href="../css/devices.css">
+  <script src="../js/devices.js"></script>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="dashboard-header">
+      <button class="btn-back" onclick="window.history.back();">Voltar</button>
+      <h1 class="dashboard-title">Controle de Acesso e Permissões dos Dispositivos</h1>
+    </div>
+
+    <div class="summary-section">
+      <div class="status-overview">
+        <div class="status-item">
+          <h3>Total de Dispositivos</h3>
+          <p>5</p>
+        </div>
+        <div class="status-item">
+          <h3>Dispositivos Seguros</h3>
+          <p>4</p>
+        </div>
+        <div class="status-item">
+          <h3>Dispositivos em Risco</h3>
+          <p>1</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="statistics-section">
+      <h2>Controle de Acesso</h2>
+
+      <div class="device" id="device1">
+        <h3>Dispositivo 1</h3>
+        <p>Status: Seguro</p>
+        <div class="access-control">
+          <label for="user1">Usuário 1:</label>
+          <select id="user1">
+            <option value="admin">Administrador</option>
+            <option value="user">Usuário</option>
+            <option value="guest">Convidado</option>
+          </select>
+          <button onclick="updatePermissions('user1')">Atualizar Permissão</button>
+        </div>
+      </div>
+
+      <div class="device" id="device2">
+        <h3>Dispositivo 2</h3>
+        <p>Status: Risco Alto</p>
+        <div class="access-control">
+          <label for="user2">Usuário 2:</label>
+          <select id="user2">
+            <option value="admin">Administrador</option>
+            <option value="user">Usuário</option>
+            <option value="guest">Convidado</option>
+          </select>
+          <button onclick="updatePermissions('user2')">Atualizar Permissão</button>
+        </div>
+      </div>
+
+      <div class="device" id="device3">
+        <h3>Dispositivo 3</h3>
+        <p>Status: Seguro</p>
+        <div class="access-control">
+          <label for="user3">Usuário 3:</label>
+          <select id="user3">
+            <option value="admin">Administrador</option>
+            <option value="user">Usuário</option>
+            <option value="guest">Convidado</option>
+          </select>
+          <button onclick="updatePermissions('user3')">Atualizar Permissão</button>
+        </div>
+      </div>
+
+      <div class="device" id="device4">
+        <h3>Dispositivo 4</h3>
+        <p>Status: Seguro</p>
+        <div class="access-control">
+          <label for="user4">Usuário 4:</label>
+          <select id="user4">
+            <option value="admin">Administrador</option>
+            <option value="user">Usuário</option>
+            <option value="guest">Convidado</option>
+          </select>
+          <button onclick="updatePermissions('user4')">Atualizar Permissão</button>
+        </div>
+      </div>
+
+      <div class="device" id="device5">
+        <h3>Dispositivo 5</h3>
+        <p>Status: Risco Alto</p>
+        <div class="access-control">
+          <label for="user5">Usuário 5:</label>
+          <select id="user5">
+            <option value="admin">Administrador</option>
+            <option value="user">Usuário</option>
+            <option value="guest">Convidado</option>
+          </select>
+          <button onclick="updatePermissions('user5')">Atualizar Permissão</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="events-section">
+      <h2>Últimos Eventos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Dispositivo</th>
+            <th>Status</th>
+            <th>Data</th>
+            <th>Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dispositivo 1</td>
+            <td class="status-safe">Seguro</td>
+            <td>01/12/2024</td>
+            <td><button class="btn-details" onclick="showDetails('device1')">Ver Detalhes</button></td>
+          </tr>
+          <tr>
+            <td>Dispositivo 2</td>
+            <td class="status-risk">Risco Alto</td>
+            <td>30/11/2024</td>
+            <td><button class="btn-details" onclick="showDetails('device2')">Ver Detalhes</button></td>
+          </tr>
+          <tr>
+            <td>Dispositivo 3</td>
+            <td class="status-safe">Seguro</td>
+            <td>29/11/2024</td>
+            <td><button class="btn-details" onclick="showDetails('device3')">Ver Detalhes</button></td>
+          </tr>
+          <tr>
+            <td>Dispositivo 4</td>
+            <td class="status-safe">Seguro</td>
+            <td>28/11/2024</td>
+            <td><button class="btn-details" onclick="showDetails('device4')">Ver Detalhes</button></td>
+          </tr>
+          <tr>
+            <td>Dispositivo 5</td>
+            <td class="status-risk">Risco Alto</td>
+            <td>27/11/2024</td>
+            <td><button class="btn-details" onclick="showDetails('device5')">Ver Detalhes</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3>Detalhes do Evento</h3>
+        <p id="event-details">Aqui serão exibidos os detalhes do evento selecionado.</p>
+      </div>
+    </div>
+
+    <div class="history-section">
+      <h2>Histórico de Ações</h2>
+      <ul>
+        <li>01/12/2024: Dispositivo 1 teve a permissão alterada para Administrador.</li>
+        <li>30/11/2024: Dispositivo 2 teve a permissão alterada para Usuário.</li>
+        <li>29/11/2024: Dispositivo 3 teve a permissão alterada para Convidado.</li>
+        <li>28/11/2024: Dispositivo 4 teve a permissão alterada para Usuário.</li>
+        <li>27/11/2024: Dispositivo 5 teve a permissão alterada para Administrador.</li>
+      </ul>
+    </div>
+
+    <div class="notifications-section">
+      <h2>Notificações</h2>
+      <ul>
+        <li><strong>Alerta:</strong> Dispositivo 2 está em risco alto!</li>
+        <li><strong>Alerta:</strong> Dispositivo 5 está em risco alto!</li>
+        <li><strong>Informação:</strong> Permissões atualizadas com sucesso.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+
+</html>
