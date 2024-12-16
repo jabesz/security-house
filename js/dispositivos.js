@@ -78,36 +78,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const deviceLocation = deviceLocationInput.value.trim();
 
     if (deviceName && deviceLocation) {
-      if (window.editingDeviceId) {
-        const device = devices.find(dev => dev.id === window.editingDeviceId);
-        if (device) {
-          device.name = deviceName;
-          device.type = deviceType;
-          device.location = deviceLocation;
+      const newDevice = {
+        name: deviceName,
+        type: deviceType,
+        location: deviceLocation,
+      };
 
-          logs.push({ time: new Date().toLocaleTimeString(), message: `Dispositivo "${deviceName}" editado.` });
+      fetch('http://localhost:3000/api/devices', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newDevice),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message) {
+            devices.push({ ...newDevice, id: devices.length + 1, status: 'Ativo' });
+            logs.push({ time: new Date().toLocaleTimeString(), message: `Novo dispositivo "${deviceName}" adicionado.` });
 
-          window.editingDeviceId = null;
-        }
-      } else {
-        const newDevice = {
-          id: devices.length + 1,
-          name: deviceName,
-          type: deviceType,
-          location: deviceLocation,
-          status: 'Ativo'
-        };
-
-        devices.push(newDevice);
-        logs.push({ time: new Date().toLocaleTimeString(), message: `Novo dispositivo "${deviceName}" adicionado.` });
-      }
+            renderDevices();
+            renderLogs();
+            updateStatistics();
+          } else {
+            console.error('Erro ao adicionar dispositivo:', data.error);
+          }
+        })
+        .catch((error) => console.error('Erro ao fazer a requisição:', error));
 
       deviceNameInput.value = '';
       deviceLocationInput.value = '';
-
-      renderDevices();
-      renderLogs();
-      updateStatistics();
     }
   });
 

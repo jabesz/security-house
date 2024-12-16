@@ -3,16 +3,22 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const deviceRoutes = require('./routes/devices');
+const planRoutes = require('./routes/plans');
 const db = require('./db');
-
 
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use('/api/devices', deviceRoutes);
 app.use(authRoutes);
-app.use(deviceRoutes);
+app.use(planRoutes);
+
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Rota funcionando!' });
+});
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
@@ -30,7 +36,6 @@ app.post('/login', (req, res) => {
   });
 });
 
-
 app.post('/register', (req, res) => {
   const { name, email, password } = req.body;
 
@@ -47,8 +52,5 @@ app.post('/register', (req, res) => {
     res.status(201).json({ message: 'Usuário cadastrado com sucesso' });
   });
 });
-
-const planRoutes = require('./routes/plans');
-app.use(planRoutes);
 
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
